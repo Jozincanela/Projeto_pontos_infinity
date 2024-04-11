@@ -1,5 +1,6 @@
 # Projeto_pontos_infinity
 
+<<<<<<< HEAD
 ## Guia de Utilização:
 
 1. Abra uma pasta no seu editor de código preferido, como o Visual Studio Code.
@@ -26,3 +27,8 @@
    ```
 
 9. Após executar esses comandos, um link HTTPS será gerado. Copie este link e cole-o na barra de endereços do seu navegador.
+=======
+## Primeira versão do aplicativo
+
+Esta é a primeira versão do aplicativo. Nela, foi incluído um gráfico principal que exibe todos os funcionários em relação ao tempo de trabalho, representado em datas. Além disso, foi dado início ao desenvolvimento da ferramenta de barra lateral, que permite ao usuário selecionar um funcionário específico. No entanto, esta funcionalidade ainda está em fase inicial e não está completamente implementada.
+>>>>>>> 292e8a93f207ec7572786ad120ed0760d8be719c
