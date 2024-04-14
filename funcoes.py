@@ -45,20 +45,26 @@ def ler_arquivo_excel(caminho_arquivo: str, Nome: str = None, Mes: str = None):
         pandas.DataFrame: DataFrame com as linhas lidas ou linhas filtradas.
     """
     df = pd.read_excel(caminho_arquivo)
+    
+
 
     # Convertendo a coluna 'DateTime' para datetime
     df['DateTime'] = pd.to_datetime(df['DateTime'], format='%Y/%m/%d %H:%M')
+    df['Date'] = df['DateTime'].dt.date
+    df['Time'] = df['DateTime'].dt.time
 
-    if Nome is not None:
-        linhas_filtradas = df[df['Name'] == Nome]
-        return linhas_filtradas
-    elif Mes is not None and Nome is None:
+
+    if Nome is not None :
+        if  Mes == None:
+            linhas_filtradas = df[df['Name'] == Nome]
+            return linhas_filtradas
+        elif Mes != None:
+            num_mes = saber_numero_mes(Mes) 
+            linhas_filtradas = df[(df['DateTime'].dt.month == num_mes) & (df["Name"] == Nome)]
+            return linhas_filtradas
+    elif Mes is not None:
         num_mes = saber_numero_mes(Mes) 
         linhas_filtradas = df[df['DateTime'].dt.month == num_mes]
-        return linhas_filtradas
-    elif Mes is not None and Nome is not None :
-        num_mes = saber_numero_mes(Mes) 
-        linhas_filtradas = df[(df['Name'] == Nome and df['DateTime']== num_mes )]
         return linhas_filtradas
     else:
         return df
@@ -80,6 +86,6 @@ def ler_coluna_excel(caminho_arquivo: str, Coluna: str):
         valores_unicos = list(set(valores_coluna))
         return valores_unicos
     except FileNotFoundError:
-        print(f"Arquivo '{caminho_arquivo}' não encontrado.")
+        st.write(f"Arquivo '{caminho_arquivo}' não encontrado.")
         return []
 

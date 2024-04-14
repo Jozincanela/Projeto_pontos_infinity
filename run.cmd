@@ -9,5 +9,6 @@ pip install streamlit
 pip install openpyxl
 echo Libs instaladas
 echo Ambiente virtual foi configurado!
-cd ..
+echo Inicializando o projeto
+call streamlit run main.py
 
